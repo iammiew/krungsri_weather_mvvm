@@ -1,1 +1,1 @@
-# krungsri_weather_mvvm
+# kotlin_mvvm_structure

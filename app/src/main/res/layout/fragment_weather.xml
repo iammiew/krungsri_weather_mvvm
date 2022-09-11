@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.weather.WeatherFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.mytestkrungsri.presentation.weather.viewmodel.WeatherViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/weatherConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:viewBindingIgnore="true"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inputConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.135"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputSearchCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="false"
+                android:layout_margin="@dimen/marginSizeMedium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:endIconMode="clear_text"
+                android:textSize="@dimen/textSizeTinySmall"
+                android:shadowColor="@color/colorGray"
+                app:boxStrokeColor="@color/colorGray"
+                app:prefixTextColor="@color/colorGray"
+                app:placeholderTextColor="@color/colorGray"
+                app:hintTextColor="@color/colorGray"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/defaultEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:hint="@string/input_search_city"
+                    android:textSize="@dimen/textSizeTinySmall"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/txtCityTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.125"
+            app:layout_constraintTop_toBottomOf="@+id/inputConstraint"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:textColor="@color/colorDark"
+                android:text="@={viewModel.showWeatherCurrent.name}"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_city"
+                tools:text="Bangkok"
+                />
+
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|center"
+                android:textColor="@color/colorDark"
+                android:text="@{viewModel.showWeatherCurrent.sys.country}"
+                android:textSize="@dimen/textSizeTinyExtraSmall"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/city"
+                tools:text="TH"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weatherTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintTop_toBottomOf="@+id/txtCityTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/imgTypeWeather"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/clouds"
+                app:layout_constraintHeight_percent="0.35"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/weatherUnits"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.5"
+                android:gravity="center"
+                android:textColor="@color/colorDark"
+                android:text="@{viewModel.showWeatherCurrent.weatherCurrent}"
+                android:textSize="@dimen/textSizeSuperExtraLarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgTypeWeather"
+                tools:text="30°C"
+                />
+
+            <TextView
+                android:id="@+id/weatherDescription"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.15"
+                android:gravity="top|center"
+                android:text="@{viewModel.showWeatherCurrent.weather[0].description}"
+                android:textColor="@color/colorLightGray"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weatherUnits" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/switchType"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.105"
+        app:layout_constraintTop_toBottomOf="@+id/weatherTemperature"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/typeCurrent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintWidth_percent="0.45"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/imgChangeType"
+            android:paddingRight="@dimen/paddingSizeMediumLarge"
+            android:gravity="center|right"
+            android:textSize="@dimen/textSizeSuperExtraLarge"
+            android:textColor="@color/colorDark"
+            android:text="@{viewModel.showWeatherCurrent.currentUnits}"
+            tools:text="°C"/>
+
+        <ImageView
+            android:id="@+id/imgChangeType"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.1"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{() -> viewModel.switchTypeWeather()}"
+            android:src="@drawable/change"
+            />
+
+        <TextView
+            android:id="@+id/typeChange"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintWidth_percent="0.45"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/imgChangeType"
+            android:paddingLeft="@dimen/paddingSizeMediumLarge"
+            android:gravity="center|left"
+            android:textSize="@dimen/textSizeMediumLarge"
+            android:textColor="@color/colorExtraLightGray"
+            android:text="@{viewModel.showWeatherCurrent.changeUnits}"
+            tools:text="°F"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailWeather"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.335"
+            app:layout_constraintTop_toBottomOf="@+id/switchType"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:padding="@dimen/paddingSizeExtraLarge"
+            android:orientation="horizontal"
+            >
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/windDetail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                >
+
+                <ImageView
+                    android:id="@+id/imgWind"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/paddingSizeSuperExtraLarge"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.5"
+                    android:src="@drawable/wind"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/headerWind"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.1"
+                    android:text="@string/txt_header_speed"
+                    tools:text="speed"
+                    app:layout_constraintTop_toBottomOf="@+id/imgWind"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSizeTinyExtraSmall"
+                    android:textColor="@color/colorDarkLight"
+                    />
+
+                <TextView
+                    android:id="@+id/windValues"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.4"
+                    tools:text="5.03"
+                    app:layout_constraintTop_toBottomOf="@+id/headerWind"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@{Double.toString(viewModel.showWeatherCurrent.wind.speed)}"
+                    android:gravity="center|top"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    android:textColor="@color/colorDark"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/humidityDetail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintLeft_toRightOf="@+id/windDetail"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <ImageView
+                    android:id="@+id/imgHumidity"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/paddingSizeSuperExtraLarge"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.5"
+                    android:src="@drawable/humidity"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/headerHumidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.1"
+                    android:text="@string/txt_header_humidity"
+                    tools:text="humidity"
+                    app:layout_constraintTop_toBottomOf="@+id/imgHumidity"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSizeTinyExtraSmall"
+                    android:textColor="@color/colorDarkLight"
+                    />
+
+                <TextView
+                    android:id="@+id/humidityValues"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.4"
+                    tools:text="79"
+                    android:text="@{Integer.toString(viewModel.showWeatherCurrent.main.humidity)}"
+                    app:layout_constraintTop_toBottomOf="@+id/headerHumidity"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:gravity="center|top"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    android:textColor="@color/colorDark"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

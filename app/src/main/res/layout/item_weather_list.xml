@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mytestkrungsri.data.entities.ForecastEntities.ForecastList" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ForecastListConstraint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/paddingSizeMedium"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerImageWeatherList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/time_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{viewModel.dt_txt}"
+                android:textSize="@dimen/textSizeTinyExtraSmall"
+                tools:text="2022-10-08 15:00:00"
+                />
+
+            <ImageView
+                android:id="@+id/imgWeatherList"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/clouds"
+                android:layout_marginTop="@dimen/marginSizeMedium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time_weather"
+                />
+
+            <TextView
+                android:id="@+id/txtWeatherValues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginSizeMedium"
+                android:textSize="@dimen/textSizeMediumLarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgWeatherList"
+                tools:text="30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wind_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/paddingSizeSmall"
+            app:layout_constraintLeft_toLeftOf="@+id/headerImageWeatherList"
+            app:layout_constraintRight_toRightOf="@+id/headerImageWeatherList"
+            app:layout_constraintTop_toBottomOf="@+id/headerImageWeatherList">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/headerDetailWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginSizeMedium"
+                android:padding="@dimen/paddingSizeMedium"
+                app:layout_constraintRight_toLeftOf="@+id/headerDetailHumidity"
+                >
+
+                <ImageView
+                    android:id="@+id/imgWindList"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/wind"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_header_wind_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSizeMedium"
+                    android:textSize="@dimen/textSizeTinyExtraSmall"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgWindList"
+                    android:text="@string/txt_header_speed"
+                    tools:text="wind" />
+
+                <TextView
+                    android:id="@+id/txt_wind_values_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    android:text="@{Double.toString(viewModel.wind.speed)}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_header_wind_list"
+                    tools:text="5.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/headerDetailHumidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginSizeMedium"
+                android:padding="@dimen/paddingSizeMedium"
+                app:layout_constraintLeft_toRightOf="@+id/wind_header"
+                >
+
+                <ImageView
+                    android:id="@+id/imgHumidityList"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/humidity"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_header_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSizeMedium"
+                    android:textSize="@dimen/textSizeTinyExtraSmall"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgHumidityList"
+                    android:text="@string/txt_header_humidity"
+                    tools:text="humidity" />
+
+                <TextView
+                    android:id="@+id/txt_humidity_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    android:text="@{Integer.toString(viewModel.main.humidity)}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_header_humidity"
+                    tools:text="50" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
