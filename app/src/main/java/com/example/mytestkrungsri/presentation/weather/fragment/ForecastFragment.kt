@@ -1,33 +1,19 @@
-package com.example.mytestkrungsri.presentation.weather
+package com.example.mytestkrungsri.presentation.weather.fragment
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyEvent.*
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mytestkrungsri.R
 import com.example.mytestkrungsri.databinding.FragmentForecastBinding
-import com.example.mytestkrungsri.databinding.FragmentWeatherBinding
-import com.example.mytestkrungsri.extensions.hideSoftKeyboard
-import com.example.mytestkrungsri.global.*
-import com.example.mytestkrungsri.presentation.common.MasterActivity
 import com.example.mytestkrungsri.presentation.weather.adapter.ForecastAdapter
 import com.example.mytestkrungsri.presentation.weather.viewmodel.WeatherViewModel
 import com.example.mytestkrungsri.utils.ImageUtils
-import kotlinx.android.synthetic.main.fragment_weather.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import kotlin.math.roundToInt
 
 class ForecastFragment : Fragment() {
 

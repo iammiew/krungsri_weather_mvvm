@@ -2,11 +2,11 @@ package com.example.mytestkrungsri.presentation.weather
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.example.mytestkrungsri.R
 import com.example.mytestkrungsri.databinding.ActivityWeatherBinding
-import com.example.mytestkrungsri.global.TITLE_WEATHER
 import com.example.mytestkrungsri.presentation.common.MasterActivity
+import com.example.mytestkrungsri.presentation.weather.fragment.ForecastFragment
+import com.example.mytestkrungsri.presentation.weather.fragment.WeatherFragment
 import com.example.mytestkrungsri.presentation.weather.viewmodel.WeatherViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

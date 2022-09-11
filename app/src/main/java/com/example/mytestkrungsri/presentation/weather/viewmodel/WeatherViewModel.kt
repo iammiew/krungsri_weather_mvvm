@@ -26,9 +26,7 @@ class WeatherViewModel(
     val showWeatherCurrent = MutableLiveData<Weather>()
     val showForecastListAdapter = MutableLiveData<List<ForecastList>>()
     val showForecastCurrentSelect = MutableLiveData<ForecastList>()
-    val showForecastPosition = SingleLiveEvent<ForecastList>()
     val errorSearchWeatherByCity = SingleLiveEvent<Unit>()
-    val showTest = SingleLiveEvent<Unit>()
 
     fun loadWeatherByCity(city: String, units: String) {
         viewModelScope.launch {
