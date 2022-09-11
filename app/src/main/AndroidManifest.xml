@@ -23,9 +23,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="AIzaSyDfrvXNBlHgM6VItCnJLadd16KTyzPJDGY" />-->
         <activity android:name="com.example.mytestkrungsri.presentation.MainActivity"></activity>
         <activity android:name="com.example.mytestkrungsri.presentation.weather.WeatherActivity">
             <intent-filter>
