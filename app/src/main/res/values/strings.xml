@@ -1,0 +1,29 @@
+<resources>
+    <!--App-->
+    <string name="default_locale" translatable="false">th</string>
+    <string name="default_country" translatable="false">TH</string>
+
+    <string name="app_name">Weather Application</string>
+
+    <!--System-->
+    <string name="msg_title_info">ข้อมูล</string>
+
+    <!--Input-->
+    <string name="input_search_city">ระบุชื่อเมือง</string>
+
+    <!--Weather-->
+    <string name="weather_type_celsius">%s°C</string>
+    <string name="weather_type_fahrenheit">%s°F</string>
+    <string name="txt_weather_type_celsius">°C</string>
+    <string name="txt_weather_type_fahrenheit">°F</string>
+    <string name="txt_header_speed">speed</string>
+    <string name="txt_header_humidity">humidity</string>
+
+    <!--Error-->
+    <string name="error_search_city_not_found">ไม่พบชื่อเมืองที่ค้นหา</string>
+    <string name="error_search_city_empty">กรุณาใส่ชื่อเมืองที่ต้องการค้นหา</string>
+
+    <!--Forecast-->
+    <string name="txt_header_forecast_all_day">พยากรณ์อากาศทั้งหมด</string>
+
+</resources>
